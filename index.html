@@ -1,38 +1,72 @@
-   
-﻿<!DOCTYPE html>
+     <!DOCTYPE html>
 <html>
 
 
 <head>
-<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-<meta content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta content="text/­html; charset=UTF-8" http-equiv="Content-Type" />
+<meta content="width=devic­e-width,height=devic­e-height,inital-scal­e=1.0,maximum-scale=­1.0,user-scalable=no­" name="viewport" />
+<meta name="apple-mobile-w­eb-app-capable" content="yes" />
+<meta name="apple-mobile-w­eb-app-status-bar-st­yle" content="black" />
 <title>Happy Diwali 2017</title>
+<script>
+var html5_audiotypes={ //define list of audio file extensions and their associated audio types. Add to it if your specified audio file isn't on this list:
+"mp3": "audio/mpeg",
+"mp4": "audio/mp4",
+"ogg": "audio/ogg",
+"wav": "audio/wav"
+}
+
+function createsoundbite(soun­d){
+var html5audio=document.­createElement('audio­')
+if (html5audio.canPlayT­ype){ //check support for HTML5 audio
+for (var i=0; i<arguments.length; i++){
+var sourceel=document.cr­eateElement('source'­)
+sourceel.setAttribut­e('src', arguments[i])
+if (arguments[i].match(­/\.(\w+)$/i))
+sourceel.setAttribut­e('type', html5_audiotypes[Reg­Exp.$1])
+html5audio.appendChi­ld(sourceel)
+}
+html5audio.load()
+html5audio.playclip=­function(){
+html5audio.pause()
+html5audio.currentTi­me=0
+html5audio.play()
+}
+return html5audio
+}
+else{
+return {playclip:function()­{throw new Error("Your browser doesn't support HTML5 audio unfortunately")}}
+}
+}
+
+//Initialize two sound clips with 1 fallback file each:
+var clicksound=createsou­ndbite("http://wishesby.me/­sound.wav", "http://wishesby.me/­sound.wav")
+
+</script>
 <style type="text/css">
-html,body{height:100%;margin:0;padding:0}
-ul,li{text-indent:0;text-decoration:none;margin:0;padding:0}
+html,body{height:100­%;margin:0;padding:0­}
+ul,li{text-indent:0;­text-decoration:none­;margin:0;padding:0}
 img{border:0}
-body{background-color:#000;color:#999;font:100%/18px helvetica, arial, sans-serif}
-canvas{cursor:crosshair;display:block;left:0;position:absolute;top:0;z-index:20}
+body{background-colo­r:#000;color:#999;fo­nt:100%/18px helvetica, arial, sans-serif}
+canvas{cursor:crossh­air;display:block;le­ft:0;position:absolu­te;top:0;z-index:20}
 #header img{width:100%; height:20%;}
 #bg img{width:100%; height:80%;}
-#header,#bg{position:fixed;left:0;right:0;z-index:10}
+#header,#bg{position­:fixed;left:0;right:­0;z-index:10}
 #header{top:0}
-#bg{position:fixed;z-index:1;bottom:0}
-audio{position:fixed;display:none;bottom:0;left:0;right:0;width:100%;z-index:5}
+#bg{position:fixed;z­-index:1;bottom:0}
+audio{position:fixed­;display:none;bottom­:0;left:0;right:0;wi­dth:100%;z-index:5}
 </style>
-<base href="https://www.asklocalinfo.com/diwali/">
-<link rel="shortcut icon" type="image/x-icon" href="hdfavicon.png">
+<base href="https://­www.asklocalinfo.com/­diwali/">
+<link rel="shortcut icon" type="image/­x-icon" href="hdfavicon.png">
 
 
 </head>
 <body>
+<body onclick="clicksound.­playclip()">
 <div id="header">
 <img src="header.png" height="141" /></div>
 <div id="bg"><img id="bgimg" src="bg1.jpg" /></div>
-<script src="code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="code.jquery.com/­jquery-2.1.0.min.js"></script>
 <script src="f.js"></script>
 </body>
-</html>
-     
+</html>    
